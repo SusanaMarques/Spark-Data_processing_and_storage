@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+docker exec docker-hive_namenode_1 bash data/import_data.sh
+
+docker exec docker-hive_namenode_1 bash -c "hdfs dfs -ls"
+
+docker exec docker-hive_namenode_1 bash data/create_tables.sh

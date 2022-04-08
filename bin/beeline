@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+
+BASE_DIR=$(dirname "${BASH_SOURCE[0]:-$0}")
+cd "${BASE_DIR}/.." || exit 127
+
+# shellcheck source=../scripts/helpers.sh
+. scripts/helpers.sh
+
+PROGRAM=$(basename "${BASH_SOURCE[0]:-$0}")
+VERSION=0.5.3
+
+function display_help() {
+  cat <<EOF
+  $(help_title_section Usage)
+    ${PROGRAM} [environments] <args>
+    ${PROGRAM} [options]
+
+  $(help_title_section Environments)
+    --local           To run in the local environment.
+    --gcloud          To run in the google cloud environment.
+
+  $(help_title_section Options)
+    -h --help         Show this screen.
+    -v --version      Show version.
+
+  $(help_title_section Notes)
+  If you need help to understand the valid arguments you can run the following:
+
+    ${PROGRAM} help
+EOF
+}
+
+case ${1:---docker} in
+  -h | --help)
+    display_help
+    ;;
+  -v | --version)
+    display_version "${VERSION}" "${PROGRAM}"
+    ;;
+  --docker)
+    docker exec -it docker-hive_hive-server_1 \
+      beeline -u jdbc:hive2://localhost:10000
+    ;;
+  --gcloud)
+    gcloud beta compute ssh \
+      --zone "us-central1-f" "ggcd-g9-tp2-m" --project "ggcd-grupo-9" \
+      -- beeline -u jdbc:hive2://localhost:10000
+    ;;
+  *)
+    display_help >&2
+    exit 1
+    ;;
+esac

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+gcloud beta compute ssh --zone "us-central1-f" "ggcd-g9-tp2-m" --project "ggcd-grupo-9"
