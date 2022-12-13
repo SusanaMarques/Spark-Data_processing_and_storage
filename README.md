@@ -32,7 +32,7 @@ local machine for development and testing purposes..
 
 ### :inbox_tray: Prerequisites
 
-The following software is required to be installed on your system:
+The following software is required to be installed on your system:m
 
 - [Java SDK 8+](https://openjdk.java.net/)
 - [Maven](https://maven.apache.org/maven-features.html)
