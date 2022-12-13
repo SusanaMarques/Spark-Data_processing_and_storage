@@ -9,7 +9,7 @@
 
 <div align="center">
 
-# Data processing and storagee
+# Data processing and storage
 
 [Geeting Started](#rocket-getting-started)
 |
