@@ -8,7 +8,7 @@
 [susana-pic]: https://github.com/SusanaMarques.png?size=120
 
 <div align="center">
-l
+
 # Data processing and storage
 
 [Geeting Started](#rocket-getting-started)
